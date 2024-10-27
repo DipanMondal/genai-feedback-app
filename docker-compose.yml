@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  db:
+    image: mongo:latest
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/db:/data/db
+    networks:
+      - mongo_django_network
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo_express
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=db
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+    networks:
+      - mongo_django_network
+
+  django:
+    build: .
+    container_name: genai-feedback-analysis-app
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - mongo_django_network
+
+networks:
+  mongo_django_network:
+    driver: bridge

@@ -1,0 +1,39 @@
+{% extends 'app.html' %}
+
+
+{% block content %}
+
+<!-- Navbar -->
+    <div class="navbar">
+        <div class="nav-left">
+            <a href="/">Home</a>
+        </div>
+        <div class="nav-right">
+            <a href="{% url 'register' %}">Sign Up</a>
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </div>
+
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <h2 class="text-muted">Login</h2>
+
+        {% if form.non_field_errors %}
+        <small class="text-danger">
+            {{ form.non_field_errors.as_ul }}
+        </small>
+        {% endif %}
+
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-dark">Login</button>
+            <a href="{% url 'register' %}" class="btn btn-default">Create a new account</a>
+
+        </form>
+        {{ msg }}
+    </div>
+</div>
+
+{% endblock %}

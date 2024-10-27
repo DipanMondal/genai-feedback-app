@@ -1,0 +1,49 @@
+{% extends 'customer_layout.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <h2 class="text-muted">Feedback Section</h2><br><br>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="comment">Feedback</label>
+                <input type="text" name="comment" id="comment" class="form-control form-control-lg">
+            </div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+
+        </form>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <h2 class="text-muted">My Feedbacks</h2><br><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Publish Date</th>
+                    <th>Username</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in feedback_list %}
+                <tr>
+                    <td>{{ data.datetime }}</td>
+                    <td>{{ data.username }}</td>
+                    <td>{{ data.feedback }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No feedback available</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

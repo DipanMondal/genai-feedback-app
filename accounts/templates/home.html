@@ -1,0 +1,22 @@
+{% extends 'app.html' %}
+
+{% block content %}
+
+<!-- Navbar -->
+    <div class="navbar">
+        <div class="nav-left">
+            <a href="/">Home</a>
+        </div>
+        <div class="nav-right">
+            <a href="{% url 'register' %}">Sign Up</a>
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </div>
+
+<div>
+    <h1 align="center">Welcome</h1>
+</div>
+
+	
+{% endblock %}
+
