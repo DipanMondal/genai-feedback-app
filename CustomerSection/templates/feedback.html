@@ -4,23 +4,21 @@
 
 <div class="row justify-content-center">
     <div class="col-sm-6">
-        <h2 class="text-muted">Feedback Section</h2><br><br>
+        <h2 class="text-muted">Feedback Section</h2>
 
         <form method="POST">
             {% csrf_token %}
-            <div class="form-group">
-                <label for="comment">Feedback</label>
-                <input type="text" name="comment" id="comment" class="form-control form-control-lg">
-            </div>
+            {{ form.as_p }}
             <button type="submit" class="btn btn-dark">Submit</button>
 
         </form>
     </div>
 </div>
 
+<br><br>
 <div class="row justify-content-center">
     <div class="col-sm-6">
-        <h2 class="text-muted">My Feedbacks</h2><br><br>
+        <h2 class="text-muted">My Feedbacks</h2>
         <table>
             <thead>
                 <tr>

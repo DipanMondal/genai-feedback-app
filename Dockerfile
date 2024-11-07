@@ -9,6 +9,8 @@ COPY . .
 
 # Install dependencies
 RUN pip install djongo pymongo datetime
+RUN pip install langchain 
+RUN pip install -U langchain-google-genai
 
 # Run Django migrations
 RUN python manage.py makemigrations
