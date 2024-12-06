@@ -3,5 +3,46 @@
 {% block content %}
 
 <h3 align="center">Welcome Admin</h3>
+<div class="chart-container-container">
+    <div class="chart-container">
+        <canvas id="myBarChart"></canvas>
+    </div>
+</div>
+
+<script>
+    // Data for the bar chart
+    const data = {
+        labels: ['Positive', 'Negative', 'Neutral'],
+        datasets: [{
+            label: 'Sales',
+            data: {{ data }},
+            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    console.log({{ data }})
+
+    // Configurations for the bar chart
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
+
+    // Render the bar chart
+    const myBarChart = new Chart(
+        document.getElementById('myBarChart'),
+        config
+    );
+</script>
 
 {% endblock %}
