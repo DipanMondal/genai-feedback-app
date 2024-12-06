@@ -3,7 +3,7 @@ from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-GOOGLE_API_KEY = 'AIzaSyCTnxP9mxqhaoVReOosmh5Y4O8ezd9d-cY'
+GOOGLE_API_KEY = 'YourApiKey'
 os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 
 llm = ChatGoogleGenerativeAI(model="gemini-pro", temperature=0.1)
